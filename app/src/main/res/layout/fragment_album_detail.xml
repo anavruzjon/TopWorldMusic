@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="album"
+            type="com.nakhmadov.topworldmusic.data.db.models.Album" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.AlbumDetailFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primaryDarkColor"
+                android:fitsSystemWindows="true"
+                android:paddingBottom="32dp"
+                app:collapsedTitleTextAppearance="@style/CollapsingToolbarCollapsedTextStyle"
+                app:contentScrim="?attr/colorPrimaryDark"
+                app:expandedTitleTextAppearance="@style/CollapsingToolbarExpandedTextStyle"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp"
+                    app:layout_collapseParallaxMultiplier="@integer/config_navAnimTime">
+
+
+                    <com.github.florent37.shapeofview.shapes.RoundRectView
+                        android:id="@+id/album_image_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:elevation="4dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        app:shape_roundRect_bottomLeftRadius="4dp"
+                        app:shape_roundRect_bottomRightRadius="4dp"
+                        app:shape_roundRect_topLeftRadius="4dp"
+                        app:shape_roundRect_topRightRadius="4dp">
+
+                        <ImageView
+                            android:id="@+id/album_cover_image"
+                            imageWithUrl="@{album.coverBig}"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp" />
+
+                    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title_text"
+                        setText="@{album.title}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/album_image_card"
+                        tools:text="Bad Vibes Forever" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/author_text"
+                        setText="@{(album.artistName == null)  ? null : @string/author(album.artistName) }"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/title_text"
+                        tools:text="Billie Eilish" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/toolbar_title_text"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            android:layout_marginEnd="16dp"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@{album.title}"
+                            android:textColor="@color/primaryTextColor"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Bad Vibes Forever" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/liked_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_heart_bordered"
+            app:fabSize="normal"
+            app:layout_anchor="@id/collapsing_toolbar"
+            app:layout_anchorGravity="bottom|right|end" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_text"
+            android:textSize="12sp"
+            app:icon="@drawable/ic_play_arrow_white"
+            app:layout_anchor="@id/collapsing_toolbar"
+            app:layout_anchorGravity="bottom|center" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circular_progress_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:cpb_background_progressbar_width="0dp"
+            app:cpb_indeterminate_mode="true"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="@color/primaryLightColor"
+            app:cpb_progressbar_width="6dp"
+            app:cpb_round_border="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tracks_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:paddingTop="24dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="artist"
+            type="com.nakhmadov.topworldmusic.data.db.models.Artist" />
+
+        <variable
+            name="listener"
+            type="com.nakhmadov.topworldmusic.listeners.ArtistClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:onClick="@{() -> listener.onClick(artist)}"
+        android:paddingBottom="18dp">
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/artist_image_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                imageWithUrl="@{artist.pictureBigUrl}"
+                android:layout_width="180dp"
+                android:layout_height="180dp" />
+
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <TextView
+            android:id="@+id/artist_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:text="@{artist.name}"
+            android:textAlignment="center"
+            android:textColor="@color/textGrayColorDark"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/artist_image_card"
+            app:layout_constraintStart_toStartOf="@id/artist_image_card"
+            app:layout_constraintTop_toBottomOf="@id/artist_image_card" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

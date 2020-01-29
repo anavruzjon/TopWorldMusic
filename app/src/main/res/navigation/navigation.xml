@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation.xml"
+    app:startDestination="@id/authFragment">
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.AuthFragment"
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_authFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_homeFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_genreDetailFragment"
+            app:destination="@id/genreDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_playlistDetailFragment"
+            app:destination="@id/playlistDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_homeListDetailFragment"
+            app:destination="@id/homeListDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/likedFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.LikedFragment"
+        android:label="fragment_liked"
+        tools:layout="@layout/fragment_liked" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.AlbumDetailFragment"
+        android:label="AlbumDetailFragment"
+        tools:layout="@layout/fragment_album_detail" >
+        <argument
+            android:name="albumId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.ArtistDetailFragment"
+        android:label="ArtistDetailFragment"
+        tools:layout="@layout/fragment_artist_detail" >
+        <argument
+            android:name="artistId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreDetailFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.GenreDetailFragment"
+        android:label="GenreDetailFragment"
+        tools:layout="@layout/fragment_genre_detail" >
+        <argument
+            android:name="genreId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_genreDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/playlistDetailFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.PlaylistDetailFragment"
+        android:label="PlaylistDetailFragment"
+        tools:layout="@layout/fragment_playlist_detail" >
+        <argument
+            android:name="playlistId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeListDetailFragment"
+        android:name="com.nakhmadov.topworldmusic.ui.HomeListDetailFragment"
+        android:label="HomeListDetailFragment"
+        tools:layout="@layout/fragment_home_list_detail">
+        <action
+            android:id="@+id/action_homeListDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeListDetailFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeListDetailFragment_to_genreDetailFragment"
+            app:destination="@id/genreDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeListDetailFragment_to_playlistDetailFragment"
+            app:destination="@id/playlistDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="listType"
+            app:argType="com.nakhmadov.topworldmusic.util.HomeListType" />
+    </fragment>
+
+</navigation>

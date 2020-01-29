@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TopWorldMusic</string>
+    <string name="redirect_url">https://nakhmadov.com</string>
+    <string name="auth_url">https://connect.deezer.com/oauth/auth.php?app_id=%s&amp;redirect_uri=%s</string>
+    <string name="home_title">Главная</string>
+    <string name="my_music_title">Моя музыка</string>
+    <string name="search_title">Поиск</string>
+    <string name="tracks_count">%1$s треков</string>
+    <string name="author">Автор: %1$s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_items">Смотреть все</string>
+    <string name="play_text">Воспроизведение</string>
+</resources>

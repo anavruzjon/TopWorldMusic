@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.nakhmadov.topworldmusic.presentation.models.HomeItems" />
+
+        <variable
+            name="listener"
+            type="com.nakhmadov.topworldmusic.listeners.HomeListClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:id="@+id/list_title_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="@{() -> listener.onClick(item.listType)}"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/list_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@{item.title}"
+                android:textColor="@color/textGrayColor"
+                android:textSize="20sp"
+                tools:text="Самые популряные альбомы" />
+
+            <ImageView
+                android:id="@+id/ic_arrow_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_chevron_black" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/albums_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingStart="12dp"
+            android:clipToPadding="false"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_title_container" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
